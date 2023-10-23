@@ -35,7 +35,11 @@ RUN mkdir -p /home/ros/ws_sensor_combined/src/ && \
 RUN cd /home/ros/ws_sensor_combined && \
     /bin/bash -c "source /opt/ros/humble/setup.sh && colcon build"
 
+RUN sudo chown -R ros:ros /home/ros/PX4-Autopilot
+
 # Add an environment variable for the workspace
 ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
 RUN echo "source /home/ros/ws_sensor_combined/install/setup.bash" >> /home/ros/.bashrc
+
+
