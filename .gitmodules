@@ -6,3 +6,7 @@
 	path = src/QADT
 	url = https://github.com/Queens-Aerospace/test_drone.git
 	branch = main
+[submodule "src/drone_workspace"]
+	path = src/drone_workspace
+	url = https://github.com/Queens-Aerospace/ros2_drone_workspace.git
+	branch = main

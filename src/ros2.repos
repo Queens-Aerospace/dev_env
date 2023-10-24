@@ -9,7 +9,7 @@ repositories:
     url: https://github.com/ros2/examples.git
     version: humble
 
-  QADT:
+  drone_workspace:
     type: git
-    url: https://github.com/Queens-Aerospace/test_drone.git
+    url: https://github.com/Queens-Aerospace/ros2_drone_workspace.git
     version: main
