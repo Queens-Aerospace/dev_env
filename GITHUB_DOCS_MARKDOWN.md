@@ -24,6 +24,7 @@ Now, clone the dev env repo on your machine (in WSL if using windows) using the 
 After that repo has cloned, open it using
 
 	code .
+ 
  (the above line of code opens vscode in your current directory so make sure you're in the den_env dir when you run that)
 
 Now, you should see all of the files in the repo in VSCode. Now we will set up your development environment. First press ctrl+shift+P. You should then see a search bar open up. In that search bar, search for Dev Containers: Rebuild and Reopen in Container, and select this option. The dev container will now begin to build, this wil take anywhere between 15-40 mins the first time it build.
@@ -33,11 +34,40 @@ Once it is built, you should see the same things VSCode as you did before, howev
 	git submodule update --init --recursive
 
 You should now be able to see the contents of any repos highlighted in the ros2.repos file and navigate to them. Now, you need a branch on our repo. 
- 
+
+ 	cd src
 	cd drone_workspace 
 	git checkout -b <your_name>
 
 You should have gotten a terminal output confirming that your branch is created and that you have been switched to that branch. For troubleshooting, consult the official [readme](https://github.com/Queens-Aerospace/dev_env), Gabe or Conor, Chat, Google, etc.
+
+## ROS2 worspace
+
+Now that you're in the dev_env you can see that in src/drone_worspace there is a folder called my_drone_ctrl and in there is another folder called my_drone_ctrl if you cd into the second my_drone_ctrl you can run the "my_first_node.py" node by typing into the command line:
+
+	./my_first_node.py
+
+this is an exmple of "hello world in ros2"  and should see a simular output in the terminal. 
+
+If you want to create a node to make the drone take off and follow your commands you will make another file with a simular format as to my_first_node.py
+
+## PX4 Simulation
+
+if you want to run the simulation cd into the PX4-Autopilot dir. This file is located in the root dir of the dev_env. To get the the root of dev_env use the code below in the terminal:
+
+	cd
+
+from there
+
+	cd PX4-Autopilot
+
+once in this dir you can build the sim with these commands:
+
+DRONE
+ 	make px4_sitl gz_x500
+
+VTOL
+	make px4_sitl gz_standard_vtol
 
 ## Next Steps
 
