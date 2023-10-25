@@ -33,7 +33,7 @@ You should now be able to see the contents of any repos highlighted in the ros2.
 	cd drone_workspace 
 	git checkout -b <your_name>
 
-You should have gotten a terminal output confirming that your branch is created and that you have been switched to that branch. For troubleshooting, consult the official readme: https://github.com/Queens-Aerospace/dev_env, Gabe or Conor, Chat, Google, etc.
+You should have gotten a terminal output confirming that your branch is created and that you have been switched to that branch. For troubleshooting, consult the official [readme](https://github.com/Queens-Aerospace/dev_env), Gabe or Conor, Chat, Google, etc.
 
 ## Next Steps
 
