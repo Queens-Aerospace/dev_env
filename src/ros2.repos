@@ -13,3 +13,8 @@ repositories:
     type: git
     url: https://github.com/Queens-Aerospace/ros2_drone_workspace.git
     version: main
+
+  plane_workspace: 
+    type: git 
+    url: https://github.com/Queens-Aerospace/ros2_plane_workspace.git
+    version: main
