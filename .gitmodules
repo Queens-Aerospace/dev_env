@@ -10,3 +10,7 @@
 	path = src/drone_workspace
 	url = https://github.com/Queens-Aerospace/ros2_drone_workspace.git
 	branch = main
+[submodule "src/plane_workspace"]
+	path = src/plane_workspace
+	url = https://github.com/Queens-Aerospace/ros2_plane_workspace.git
+	branch = main
