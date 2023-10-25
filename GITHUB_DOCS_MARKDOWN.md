@@ -2,11 +2,11 @@
 
 ## WSL
 
-Step 1 is to install WSL2 (Ubuntu 22.04) on your windows machine. [Instructions can be found here:](https://learn.microsoft.com/en-us/windows/wsl/install)
+Step 1 is to install WSL2 (Ubuntu 22.04) on your windows machine. [Instructions can be found here](https://learn.microsoft.com/en-us/windows/wsl/install)
 
 ## Docker
 
-Next install docker, for windows and macOS, install docker desktop on your machine. For linux users, install docker through the command line using the convience script found on this webpage: docs.docker.com/engine/install/ubuntu
+Next install docker, for windows and macOS, install docker desktop on your machine. For linux users, install docker through the command line using the convience script found on this [webpage](docs.docker.com/engine/install/ubuntu)
 
 ## VSCode Configuration
 
@@ -37,5 +37,5 @@ You should have gotten a terminal output confirming that your branch is created 
 
 ## Next Steps
 
-Now that you are on your branch, start expirementing with ROS2 through the video series (https://www.youtube.com/playlist?list=PLLSegLrePWgJudpPUof4-nVFHGkB62Izy) and ROS2 PX4 integration (https://docs.px4.io/main/en/ros/). Happy bashing!
+Now that you are on your branch, start expirementing with ROS2 through the [video series](https://www.youtube.com/playlist?list=PLLSegLrePWgJudpPUof4-nVFHGkB62Izy) and [ROS2 PX4 integration](https://docs.px4.io/main/en/ros/). Happy bashing!
 
