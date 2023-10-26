@@ -57,16 +57,18 @@ If you want to run the simulation cd into the PX4-Autopilot directory This file 
 
 	cd
 
-from there
+From there:
 
 	cd PX4-Autopilot
 
-once in this directory you can build the sim with these commands:
+Once in this directory you can build the sim with these commands:
 
 DRONE:
+
  	make px4_sitl gz_x500
 
 VTOL:
+
 	make px4_sitl gz_standard_vtol
 
 ## Next Steps
