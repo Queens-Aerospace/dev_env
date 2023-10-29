@@ -37,11 +37,11 @@ You should now be able to see the contents of any repos highlighted in the ros2.
 
  	cd src
 	cd drone_workspace 
-	git checkout -b <your_name>
+	git checkout -b <your_name> 
 
 You should have gotten a terminal output confirming that your branch is created and that you have been switched to that branch. For troubleshooting, consult the official [readme](https://github.com/Queens-Aerospace/dev_env), Gabe or Conor, Chat, Google, etc.
 
-## ROS2 worspace
+## ROS2 workspace
 
 Now that you're in the dev_env you can see that in src/drone_worspace there is a folder called my_drone_ctrl and in there is another folder called my_drone_ctrl if you cd into the second my_drone_ctrl you can run the "my_first_node.py" node by typing into the command line:
 
