@@ -37,9 +37,31 @@ You should now be able to see the contents of any repos highlighted in the ros2.
 
  	cd src
 	cd drone_workspace 
-	git checkout -b <your_name> 
+## Creating a Branch
+(this only works if youre a collaborator on the repo so send us your github name)
 
-You should have gotten a terminal output confirming that your branch is created and that you have been switched to that branch. For troubleshooting, consult the official [readme](https://github.com/Queens-Aerospace/dev_env), Gabe or Conor, Chat, Google, etc.
+Go into GitHub on your browser, click on the repo that you're working in (in this example its ros2_drone_workspace) go to branchs (should be right under the repos name, and should say "4 branchs" or however many branches have already been made. 
+
+Then in the top right click new branch and make one with a name of your choice. To go use the branch in vscode in terminal do the following:
+
+Make sure youre in the right dir:
+
+	cd src
+ 	cd drone_workspace (or whatever you called the repo in the ros2.repos file in src)
+  
+Then fetch the repo:
+
+ 	git fetch
+
+Now when you run:
+
+	git branch
+ 
+ You should see your branch, to switch into it do:
+
+ 	git checkout <branch name> (e.g git checkout conor)
+
+now you should b in your own branch you can push and pull to.
 
 ## ROS2 workspace
 
