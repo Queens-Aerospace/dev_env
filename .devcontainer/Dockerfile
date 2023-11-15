@@ -31,7 +31,20 @@ RUN mkdir -p /home/ros/ws_sensor_combined/src/ && \
    git clone https://github.com/PX4/px4_msgs.git /home/ros/ws_sensor_combined/src/px4_msgs && \
    git clone https://github.com/PX4/px4_ros_com.git /home/ros/ws_sensor_combined/src/px4_ros_com
 
-# Build the workspace using colcon
+# Download and install QGroundControl
+RUN wget https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage -O /home/ros/QGroundControl.AppImage && \
+    chmod +x /home/ros/QGroundControl.AppImage
+
+# Set environment variable to allow running GUI applications
+ENV DISPLAY=:0
+
+# Install FUSE for QGroundControl AppImage
+RUN apt-get update && \
+    apt-get install -y fuse && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+#Build the workspace using colcon
 RUN cd /home/ros/ws_sensor_combined && \
     /bin/bash -c "source /opt/ros/humble/setup.sh && colcon build"
 
@@ -42,4 +55,7 @@ ARG WORKSPACE
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
 RUN echo "source /home/ros/ws_sensor_combined/install/setup.bash" >> /home/ros/.bashrc
 
-
+#ensure that we are in ros user before running qgroundcontrol
+USER ros
+# Command to run QGroundControl as the 'ros' user
+CMD ["/home/ros/QGroundControl.AppImage"]
