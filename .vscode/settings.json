@@ -70,5 +70,6 @@
         ".vscode",
         ".vscode-insiders",
         ".devcontainer/devcontainer.json"
-    ]
+    ],
+    "cmake.sourceDirectory": "/home/matt/dev_env/src/drone_workspace/build/px4_msgs/px4_msgs__py"
 }

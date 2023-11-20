@@ -31,6 +31,17 @@ RUN mkdir -p /home/ros/ws_sensor_combined/src/ && \
    git clone https://github.com/PX4/px4_msgs.git /home/ros/ws_sensor_combined/src/px4_msgs && \
    git clone https://github.com/PX4/px4_ros_com.git /home/ros/ws_sensor_combined/src/px4_ros_com
 
+#Build the workspace using colcon
+RUN cd /home/ros/ws_sensor_combined && \
+    /bin/bash -c "source /opt/ros/humble/setup.sh && colcon build"
+
+RUN sudo chown -R ros:ros /home/ros/PX4-Autopilot
+
+# Add an environment variable for the workspace
+ARG WORKSPACE
+RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
+RUN echo "source /home/ros/ws_sensor_combined/install/setup.bash" >> /home/ros/.bashrc
+
 # Download and install QGroundControl
 RUN wget https://s3-us-west-2.amazonaws.com/qgroundcontrol/latest/QGroundControl.AppImage -O /home/ros/QGroundControl.AppImage && \
     chmod +x /home/ros/QGroundControl.AppImage
@@ -44,18 +55,36 @@ RUN apt-get update && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
-#Build the workspace using colcon
-RUN cd /home/ros/ws_sensor_combined && \
-    /bin/bash -c "source /opt/ros/humble/setup.sh && colcon build"
+#update bashversion in order to be able to use ohmybash
+RUN apt-get install -y bash
+#add ohmybash and set it as the bash https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/ohmybash/oh-my-bash/master/tools/install.sh)"
+RUN sed -i 's/OSH_THEME=.*/OSH_THEME="powerline"/g' /home/ros/.bashrc
 
-RUN sudo chown -R ros:ros /home/ros/PX4-Autopilot
-
-# Add an environment variable for the workspace
-ARG WORKSPACE
-RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
-RUN echo "source /home/ros/ws_sensor_combined/install/setup.bash" >> /home/ros/.bashrc
-
-#ensure that we are in ros user before running qgroundcontrol
-USER ros
 # Command to run QGroundControl as the 'ros' user
-CMD ["/home/ros/QGroundControl.AppImage"]
+#"/home/ros/QGroundControl.AppImage"
+
+USER root
+
+#install figlet
+RUN apt-get update && \
+    apt-get install -y figlet && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+USER ros
+
+#install figlet fonts & add as
+RUN git clone https://github.com/xero/figlet-fonts.git /home/ros/figlet-fonts
+RUN sudo mv /home/ros/figlet-fonts/3d.flf /usr/share/figlet/
+RUN sudo mv /home/ros/figlet-fonts/Crazy.flf /usr/share/figlet/
+RUN sudo mv "/home/ros/figlet-fonts/Big Money-se.flf" /usr/share/figlet/
+# Copy big_money_plane_V.flf from the host to the container's figlet-fonts directory
+COPY big_money_plane_V.flf /home/ros/figlet-fonts/
+
+# Move the font file to the appropriate directory
+RUN sudo mv /home/ros/figlet-fonts/big_money_plane_V.flf /usr/share/figlet/
+
+
+
+RUN echo "figlet -f 3d -c Welcome to" >> /home/ros/.bashrc
+RUN echo "figlet -f big_money_plane_V QADT V" >> /home/ros/.bashrc 
